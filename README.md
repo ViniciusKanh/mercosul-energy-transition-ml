@@ -330,16 +330,6 @@ Este estudo foi desenhado para resistir à crítica científica:
 
 ---
 
-## 🚀 Próximos passos
-
-- [ ] Selecionar as figuras finais para o artigo.
-- [ ] Priorizar os resultados **sem vazamento** na narrativa metodológica.
-- [ ] Validar os nomes dos perfis com a literatura de energia regional.
-- [ ] Relacionar trajetórias nacionais recentes a eventos de política energética e contexto econômico.
-- [ ] Finalizar tabelas em LaTeX a partir de `results/latex/`.
-
----
-
 ## 📚 Fonte de dados e créditos
 
 - **Dados:** [Our World in Data — Energy Dataset](https://github.com/owid/energy-data) (`data/raw/owid-energy-data.csv`).
