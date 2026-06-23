@@ -1,0 +1,11 @@
+﻿country,year,cluster_transicao,perfil_transicao,nome_sugerido
+Argentina,2025,1,baixa_transicao,Perfil fossil-intensivo
+Bolivia,2025,1,baixa_transicao,Perfil fossil-intensivo
+Peru,2025,1,baixa_transicao,Perfil fossil-intensivo
+Brazil,2025,2,transicao_avancada,Perfil renovavel/baixo carbono
+Chile,2025,2,transicao_avancada,Perfil renovavel/baixo carbono
+Colombia,2025,2,transicao_avancada,Perfil renovavel/baixo carbono
+Ecuador,2025,2,transicao_avancada,Perfil renovavel/baixo carbono
+Paraguay,2025,2,transicao_avancada,Perfil renovavel/baixo carbono
+Uruguay,2025,2,transicao_avancada,Perfil renovavel/baixo carbono
+Venezuela,2024,2,transicao_avancada,Perfil renovavel/baixo carbono

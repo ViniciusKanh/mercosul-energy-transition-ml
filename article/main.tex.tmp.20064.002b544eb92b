@@ -1,0 +1,588 @@
+% !TeX program = xelatex
+% !TeX TS-program = xelatex
+% !BIB program = bibtex
+% ============================================================
+% MODELO LaTeX - PRÊMIO MERCOSUL DE CT&I 2026
+% Projeto:
+% Mineração de dados e aprendizado de máquina interpretável
+% para classificação de trajetórias de descarbonização
+% nos países do MERCOSUL
+%
+% Compilador recomendado no Overleaf: XeLaTeX
+% ============================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% ------------------------------------------------------------
+% Configuração de idioma e fonte
+% ------------------------------------------------------------
+\usepackage[brazilian]{babel}
+
+% Fonte exigida pelo edital: Arial (via fontspec; requer XeLaTeX ou LuaLaTeX).
+\usepackage{fontspec}
+\setmainfont{Arial}
+% Observação: no Overleaf, selecionar o compilador XeLaTeX. Se a fonte Arial não
+% estiver disponível no ambiente, enviar o arquivo Arial.ttf para o projeto. Em
+% pdfLaTeX (não recomendado), comente as duas linhas acima e use, como aproximação
+% métrica: \usepackage{helvet}\renewcommand{\familydefault}{\sfdefault}
+
+% ------------------------------------------------------------
+% Definição do comando \fonte
+\newcommand{\fonte}[1]{\caption*{Fonte: #1}}
+
+% Margens exigidas pelo edital
+% Sup/Inf: 2,3 cm
+% Dir/Esq: 3,0 cm
+% ------------------------------------------------------------
+\usepackage[
+    top=2.3cm,
+    bottom=2.3cm,
+    left=3.0cm,
+    right=3.0cm
+]{geometry}
+
+% ------------------------------------------------------------
+% Espaçamento 1,5
+% ------------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+
+% ------------------------------------------------------------
+% Pacotes gerais
+% ------------------------------------------------------------
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{svg}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, positioning, fit}
+% ------------------------------------------------------------
+% Citações em padrão autor-data ABNT aproximado
+% ------------------------------------------------------------
+\usepackage[alf]{abntex2cite}
+
+% ------------------------------------------------------------
+% Configuração de parágrafos
+% ------------------------------------------------------------
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% ------------------------------------------------------------
+% Informações do trabalho
+% ------------------------------------------------------------
+\newcommand{\titulo}{
+Mineração de dados e aprendizado de máquina interpretável para classificação de trajetórias de descarbonização nos países do MERCOSUL
+}
+
+\newcommand{\autor}{
+Vinicius de Souza Santos
+}
+
+\newcommand{\instituicao}{
+Universidade Estadual Paulista ``Júlio de Mesquita Filho'' -- UNESP
+}
+
+\newcommand{\emailautor}{
+vinicius-souza.santos@unesp.br
+}
+
+% ============================================================
+% INÍCIO DO DOCUMENTO
+% ============================================================
+
+\begin{document}
+
+% ------------------------------------------------------------
+% CAPA
+% ------------------------------------------------------------
+\begin{titlepage}
+    \begin{center}
+
+        \vspace*{2cm}
+
+        {\Large \textbf{19º PRÊMIO MERCOSUL DE CIÊNCIA, TECNOLOGIA E INOVAÇÃO -- EDIÇÃO 2026}}
+
+        \vspace{1.5cm}
+
+        {\large Tema: Descarbonização e Transição Energética para um Mundo mais Sustentável}
+
+        \vspace{2.5cm}
+
+        {\Large \textbf{\titulo}}
+
+        \vspace{2.5cm}
+
+        {\large \textbf{\autor}}
+
+        \vspace{0.5cm}
+
+        {\large \instituicao}
+
+        \vspace{0.5cm}
+
+        {\large \emailautor}
+
+        \vfill
+
+        {\large Categoria: Jovem Pesquisador}
+
+        \vspace{1cm}
+
+        {\large Brasil}
+
+        \vspace{0.5cm}
+
+        {\large 2026}
+
+    \end{center}
+\end{titlepage}
+
+% ------------------------------------------------------------
+% IDENTIFICAÇÃO DO TRABALHO
+% ------------------------------------------------------------
+\section*{Identificação}
+
+\noindent
+\textbf{Autor:} \autor
+
+\noindent
+\textbf{Instituição de vínculo:} \instituicao
+
+\noindent
+\textbf{Endereço institucional:} Av. 24 A, 1515 - Bela Vista, Rio Claro - SP, 13506-692
+
+\noindent
+\textbf{Telefone:} (019) 3526-9000
+
+\noindent
+\textbf{Correio eletrônico:} \emailautor
+
+\noindent
+\textbf{Título do trabalho:} \titulo
+
+\noindent
+\textbf{Categoria:} Jovem Pesquisador
+
+\newpage
+
+% ------------------------------------------------------------
+% RESUMO
+% ------------------------------------------------------------
+\section*{Resumo}
+
+A transição energética constitui um dos principais desafios científicos, tecnológicos e ambientais do século XXI, especialmente em regiões com elevada diversidade de matrizes energéticas, como os países do MERCOSUL e associados. Este trabalho apresenta uma abordagem baseada em mineração de dados e aprendizado de máquina interpretável para classificar trajetórias de descarbonização a partir de indicadores energéticos, ambientais e temporais. Foram utilizados dados públicos do \textit{Our World in Data Energy Dataset}, contemplando variáveis como participação de fontes renováveis, fósseis e de baixo carbono na energia e na eletricidade, intensidade de carbono da eletricidade, energia per capita e por unidade de PIB, além de atributos temporais de transição. A metodologia envolveu auditoria dos dados, engenharia de atributos, construção de perfis de transição energética por agrupamento com o algoritmo K-Means, modelagem supervisionada para reprodução dos perfis e interpretação por técnicas de importância de variáveis. A análise identificou três perfis de transição energética --- fóssil-intensivo, renovável/baixo carbono e renovável de alta intensidade energética ---, com predomínio recente do perfil renovável/baixo carbono (apenas Argentina e Bolívia permanecem fóssil-intensivas no ano mais recente). Modelos supervisionados reproduziram esses perfis com alto desempenho (F1 macro de 1,00 para a regressão logística), o que indica forte separabilidade interna dos grupos; ressalva-se, contudo, que o conjunto de teste é pequeno (29 observações) e que a métrica avalia a reprodução dos rótulos da clusterização, não a capacidade preditiva externa. A importância por permutação indicou que variáveis da matriz elétrica e a tendência recente de participação renovável foram as mais associadas à distinção entre os perfis. O estudo contribui para o desenvolvimento científico e tecnológico no MERCOSUL ao propor um protocolo reprodutível, interpretável e aplicável ao monitoramento da transição energética.
+
+\noindent
+\textbf{Palavras-chave:} transição energética; descarbonização; mineração de dados; aprendizado de máquina; MERCOSUL.
+
+\newpage
+
+% ------------------------------------------------------------
+% 1. INTRODUÇÃO
+% ------------------------------------------------------------
+\section{Introdução}
+
+A transição energética constitui um dos principais desafios contemporâneos para países em desenvolvimento, especialmente em regiões marcadas por heterogeneidade econômica, desigualdade estrutural, dependência de recursos naturais e diferentes graus de inserção de fontes renováveis na matriz energética. Em termos gerais, esse processo envolve a substituição progressiva de fontes intensivas em carbono por fontes renováveis e de baixa emissão, a modernização dos sistemas de geração e distribuição de energia, a ampliação da eficiência energética e a redução da dependência de combustíveis fósseis. Mais do que uma mudança tecnológica, trata-se de uma transformação estrutural que articula dimensões econômicas, ambientais, institucionais e sociais.
+
+Na América Latina e na América do Sul, a transição energética apresenta características particulares. A região possui elevado potencial para fontes renováveis, incluindo energia hidrelétrica, solar, eólica e biomassa, mas também convive com assimetrias nacionais relevantes quanto à dependência de combustíveis fósseis, infraestrutura elétrica, segurança energética, capacidade de investimento e estabilidade regulatória. Revisões recentes indicam que a América do Sul apresenta condições favoráveis para a expansão de tecnologias renováveis, especialmente solar e eólica, embora persistam desafios relacionados à intermitência, ao financiamento, à infraestrutura, ao armazenamento energético e à integração dessas fontes aos sistemas elétricos nacionais \cite{Cacciuttolo2024RenewableSolarEnergy,Cacciuttolo2024RenewableWindEnergy}. De modo complementar, estudos sobre biomassa destacam que os recursos bioenergéticos também podem desempenhar papel relevante nas estratégias latino-americanas de transição sustentável, particularmente em trajetórias que combinam bioeletricidade, biocombustíveis e aproveitamento de resíduos \cite{LaverdeAlbaracin2026BiomassLatinAmerican}.
+
+No contexto dos países do MERCOSUL e associados, a análise da transição energética demanda atenção à diversidade das trajetórias nacionais. Alguns países apresentam elevada participação de fontes renováveis ou de baixo carbono na geração elétrica, enquanto outros mantêm dependência significativa de fontes fósseis em segmentos estratégicos, como geração termelétrica, transporte, indústria e consumo final de energia. Essa diversidade implica que a descarbonização regional não pode ser compreendida apenas por médias agregadas ou indicadores isolados. Ao contrário, torna-se necessário identificar padrões, comparar trajetórias e reconhecer perfis energéticos distintos, considerando simultaneamente participação renovável, participação fóssil, intensidade de carbono, consumo energético e evolução temporal dos indicadores.
+
+A literatura recente reforça a importância de analisar a relação entre produtividade energética, qualidade ambiental e desempenho dos sistemas energéticos latino-americanos de forma temporal e multidimensional \cite{Soto2025EnergyResourceProductivity,AsturiasSchaub2025FractionalIntegrationEnergy}. Nesse quadro, a matriz elétrica ocupa posição central: a intensidade de carbono da eletricidade e as participações fóssil e de baixo carbono na geração estão diretamente associadas à capacidade de reduzir emissões \cite{Reichert2024ForecastingElectricityGeneration,Rio2025ModelingPlanningSustainable,ValenciaDuque2025EvaluationEnergyEfficiency}. Compreender a transição exige, assim, observar não apenas o consumo total de energia, mas também a composição da eletricidade e sua intensidade de carbono.
+
+A interpretação isolada de indicadores, porém, limita a compreensão das trajetórias nacionais, ao passo que sua combinação pode revelar estruturas latentes. Técnicas de mineração de dados e aprendizado de máquina permitem identificar padrões em bases multidimensionais e agrupar países ou períodos semelhantes; a clusterização, em particular, tem sido aplicada a estudos de energia e meio ambiente para identificar grupos de países com características afins \cite{JimenezPreciado2025LatinAmericaEnvironmental,Nagaj2025HierarchicalModellingSustainable}.
+
+Modelos supervisionados podem, então, verificar em que medida os perfis identificados são reproduzíveis a partir dos indicadores --- não como predição de uma classe externa, mas como validação complementar da separabilidade dos perfis. Associados a técnicas de interpretabilidade, permitem ainda identificar quais variáveis mais distinguem as trajetórias, aspecto essencial em estudos socioambientais e de apoio a políticas públicas \cite{DeLaHozM2025HarnessingMachineLearning,DOrazio2025EvaluatingClimateRelated}.
+
+Apesar desse avanço, a literatura sobre transição energética na América Latina ainda apresenta uma lacuna específica. Os estudos disponíveis tendem a analisar fontes ou setores de forma isolada, a concentrar-se em um único país ou em recortes subnacionais, ou a aplicar técnicas de agrupamento sobre unidades distintas de países-ano, como empresas ou municípios. Permanece pouco explorada uma abordagem que combine, de modo integrado e reprodutível, indicadores da matriz energética, da matriz elétrica e da dinâmica temporal para caracterizar perfis comparáveis de transição energética no conjunto dos países do MERCOSUL e associados, com validação que controle o vazamento temporal e com interpretação explícita dos fatores que diferenciam esses perfis. É essa lacuna que o presente trabalho busca preencher.
+
+Diante desse cenário, e em alinhamento com o tema ``Descarbonização e Transição Energética para um Mundo mais Sustentável'', este trabalho propõe uma abordagem baseada em mineração de dados e aprendizado de máquina interpretável para identificar e classificar trajetórias de descarbonização nos países do MERCOSUL e associados. A proposta utiliza indicadores públicos de energia, emissões e matriz elétrica para construir perfis de transição energética, avaliar a capacidade de modelos supervisionados em reproduzir tais perfis e interpretar os fatores mais associados à distinção entre trajetórias fóssil-intensivas, renováveis/baixo carbono e renováveis de alta intensidade energética.
+
+As principais contribuições deste trabalho são: (i) a integração de indicadores energéticos, elétricos e temporais em uma base comparável de pares país-ano para o MERCOSUL e associados; (ii) a identificação de perfis interpretáveis de transição energética por meio de clusterização; (iii) a verificação da separabilidade desses perfis por classificação supervisionada sob validação temporal sem vazamento metodológico; (iv) a análise de robustez e de ablação de variáveis, que avalia a dependência dos resultados em relação a indicadores compostos; e (v) a proposição de um protocolo reprodutível e auditável, aplicável ao monitoramento periódico da transição energética regional.
+
+O restante do artigo está organizado da seguinte forma: a fundamentação teórica situa os conceitos de transição energética e descarbonização e os métodos de mineração de dados e aprendizado de máquina empregados; a metodologia detalha as fontes de dados, o pré-processamento, a engenharia de atributos, a clusterização, a classificação e a interpretabilidade; os resultados apresentam os perfis identificados e o desempenho dos modelos; a discussão interpreta os achados à luz da literatura; e as considerações finais sintetizam as contribuições e apontam direções de trabalhos futuros.
+
+% ------------------------------------------------------------
+% 2. JUSTIFICATIVA
+% ------------------------------------------------------------
+\section{Justificativa}
+
+A descarbonização das economias exige instrumentos analíticos capazes de acompanhar a evolução dos sistemas energéticos de forma comparável, transparente e reprodutível. No caso dos países do MERCOSUL e associados, essa necessidade é ampliada pela heterogeneidade das matrizes energéticas e elétricas, pelas diferenças na disponibilidade de recursos renováveis e pela existência de trajetórias nacionais historicamente distintas, o que torna inadequada uma leitura homogênea da transição regional.
+
+A relevância científica do estudo decorre da integração entre indicadores energéticos, mineração de dados e aprendizado de máquina interpretável. A clusterização permite explorar estruturas latentes nos dados, agrupando observações com características semelhantes sem impor categorias prévias --- estratégia adequada a trajetórias de descarbonização não lineares nem homogêneas ---, enquanto o treinamento de modelos supervisionados para reproduzir esses perfis avalia sua separabilidade e identifica as variáveis mais relevantes para distingui-los, aproximando a modelagem computacional da formulação de políticas públicas \cite{BarraganOcana2025PoliciesSustainableEnergy,AraujoVizuete2025RoadmapEnergyTransition,Soto2025EnergyResourceProductivity}.
+
+Do ponto de vista prático, ao propor um procedimento reprodutível baseado em dados públicos, o trabalho pode apoiar o monitoramento da transição energética regional, permitindo atualizar resultados, incorporar novos indicadores e comparar a evolução dos perfis ao longo do tempo. Justifica-se, assim, por três pilares: a importância estratégica da descarbonização para a sustentabilidade regional; a necessidade de métodos quantitativos que integrem múltiplas dimensões da transição; e o potencial do aprendizado de máquina interpretável para produzir evidências compreensíveis e auditáveis.
+
+% ------------------------------------------------------------
+% 3. OBJETIVOS
+% ------------------------------------------------------------
+\section{Objetivos}
+
+\subsection{Objetivo geral}
+
+Desenvolver uma abordagem baseada em mineração de dados e aprendizado de máquina interpretável para identificar, classificar e interpretar trajetórias de descarbonização nos países do MERCOSUL e associados, considerando indicadores energéticos, ambientais e temporais relacionados à matriz energética, à matriz elétrica e à intensidade de carbono.
+
+\subsection{Objetivos específicos}
+
+\begin{enumerate}
+    \item Construir e auditar uma base integrada de indicadores públicos de energia, emissões e matriz elétrica dos países analisados, documentando o tratamento dos dados.
+
+    \item Desenvolver atributos derivados de participação renovável, fóssil e de baixo carbono, intensidade de carbono, consumo energético e tendência temporal de transição.
+
+    \item Identificar perfis de transição energética por clusterização, avaliando diferentes números de grupos e métricas internas de qualidade.
+
+    \item Interpretar os perfis a partir dos indicadores mais representativos, distinguindo trajetórias fóssil-intensivas, renováveis/baixo carbono e renováveis de alta intensidade energética.
+
+    \item Treinar modelos supervisionados para reproduzir os perfis sob validação temporal sem vazamento, avaliando o desempenho por métricas multiclasse.
+
+    \item Aplicar interpretabilidade por importância de variáveis e análises de robustez e ablação para identificar os fatores associados à distinção entre perfis e verificar a estabilidade dos resultados.
+
+    \item Discutir a aplicabilidade dos resultados ao monitoramento da transição energética e ao apoio a políticas públicas de descarbonização no MERCOSUL e em seus países associados.
+\end{enumerate}
+
+\section{Fundamentação Teórica}
+\label{sec:fundamentacao_teorica}
+
+A transição energética e a descarbonização são processos centrais para a reorganização dos sistemas energéticos contemporâneos: a primeira envolve a substituição gradual de fontes intensivas em carbono por renováveis ou de menor emissão e a incorporação de práticas de eficiência; a segunda, a redução das emissões associadas ao uso da energia, a eletrificação de setores e a diminuição da dependência fóssil. Trata-se de um processo sistêmico, condicionado por fatores econômicos, políticos, sociais e territoriais \cite{Dracea2026,Prina2023}, o que justifica investigar as trajetórias do MERCOSUL e associados por indicadores energéticos, elétricos e temporais combinados: a transição não pode ser reduzida à participação renovável de um único ano, pois matrizes elétricas limpas podem coexistir com forte dependência fóssil no consumo total, e um crescimento recente de renováveis pode conviver com elevada intensidade de carbono.
+
+\subsection{Transição energética, descarbonização e desacoplamento}
+\label{subsec:transicao_descarbonizacao_desacoplamento}
+
+A literatura recente tem associado a transição energética ao conceito de desacoplamento entre crescimento econômico, consumo energético e emissões de carbono. O desacoplamento ocorre quando a economia mantém ou amplia sua atividade enquanto reduz, em termos relativos ou absolutos, sua pressão ambiental. Para \citeonline{Dracea2026}, o conceito de desacoplamento ganhou papel central nas estratégias climáticas por indicar a possibilidade de melhoria dos indicadores ambientais em um contexto de continuidade do desenvolvimento econômico.
+
+No entanto, o desacoplamento não deve ser interpretado de modo simplificado. \citeonline{Dracea2026} distinguem diferentes formas de desacoplamento, mostrando que a redução da intensidade de carbono pode ocorrer de maneira desigual entre regiões. Os autores utilizam elasticidade de Tapio, decomposição Kaya--LMDI e modelos em painel para avaliar a relação entre consumo de energia e emissões de CO$_2$. Métodos de decomposição como o LMDI também têm sido empregados em análises de emissões de CO$_2$ relacionadas à energia, inclusive na discussão sobre a seleção de períodos de análise \cite{RiveraNiquepa2025AssessingComputationalComplexity}. Essa abordagem é relevante porque separa efeitos estruturais de longo prazo de flutuações anuais ou conjunturais. Em termos metodológicos, tal distinção é importante para evitar conclusões precipitadas baseadas apenas em variações pontuais.
+
+A intensidade de carbono da energia --- quanto de CO$_2$ é emitido por unidade de energia --- é um indicador central nesse debate \cite{Dracea2026}: sua redução pode refletir avanços tecnológicos, substituição de fósseis por renováveis, maior eficiência ou mudanças estruturais na matriz energética.
+
+\subsection{Transição energética como fenômeno sistêmico e intersetorial}
+\label{subsec:transicao_sistemica}
+
+A transição energética contemporânea não se restringe ao setor elétrico. Embora a geração elétrica seja uma dimensão central, a descarbonização exige integração entre diferentes setores da economia. \citeonline{Prina2023} destacam que a literatura recente sobre sistemas energéticos tem avançado em três eixos principais: sistemas energéticos inteligentes e acoplamento setorial; modelagem e análise de sistemas energéticos; e estratégias e políticas de redução de emissões. Essa classificação evidencia que a transição energética precisa ser compreendida como um processo sistêmico, no qual eletricidade, transporte, indústria, aquecimento, edificações e armazenamento interagem entre si.
+
+A ideia de acoplamento setorial é relevante porque permite avaliar sinergias entre setores. A eletrificação do transporte, por exemplo, pode reduzir o consumo de combustíveis fósseis, mas também aumenta a demanda por eletricidade. Se essa eletricidade for produzida por fontes renováveis ou de baixo carbono, a eletrificação pode contribuir para a redução das emissões. Caso contrário, parte dos benefícios pode ser limitada. Assim, a análise da matriz elétrica torna-se indispensável para avaliar a coerência das estratégias de transição.
+
+A modelagem de sistemas energéticos também contribui para avaliar cenários futuros, riscos de suprimento, expansão de renováveis, armazenamento e estratégias de mitigação. \citeonline{Prina2023} destacam que abordagens integradas permitem identificar caminhos de descarbonização considerando simultaneamente aspectos econômicos, ambientais e de confiabilidade. Ferramentas abertas de modelagem de sistemas energéticos, como as sistematizadas por \citeonline{PlazasNino2025UncoveringResearchDirections}, ampliam a capacidade de explorar tais cenários. Sobretudo, a distinção entre matriz energética e matriz elétrica justifica considerar simultaneamente indicadores de energia e de eletricidade, pois um país pode ter eletricidade predominantemente renovável e ainda depender de combustíveis fósseis no consumo energético total.
+
+\subsection{Transição justa, dependência fóssil e riscos socioeconômicos}
+\label{subsec:transicao_justa}
+
+A transição energética também possui implicações sociais relevantes. A substituição de combustíveis fósseis, embora necessária para reduzir emissões, pode gerar impactos sobre empregos, comunidades, empresas e cadeias produtivas. Nesse sentido, a literatura sobre transição justa busca compreender como os custos e benefícios da descarbonização são distribuídos entre trabalhadores, regiões e setores econômicos. \citeonline{Maissa2025} argumentam que a transição para uma economia de baixo carbono envolve riscos significativos para o emprego no setor global de petróleo e gás, especialmente quando empresas mantêm estratégias inativas diante das mudanças climáticas.
+
+O estudo de \citeonline{Maissa2025} utiliza agrupamento hierárquico sobre componentes principais para classificar as 100 maiores empresas globais de petróleo e gás segundo indicadores de transição justa, o que é duplamente relevante aqui: mostra que a clusterização pode identificar perfis em problemas de transição energética e que os agrupamentos devem ser lidos como categorias analíticas derivadas de indicadores, não como classes naturais. Os autores ressaltam ainda que a descarbonização envolve ``múltiplos desafios sociais'' --- empregos, receitas, infraestrutura e interesses consolidados ---, de modo que países com maior participação fóssil podem enfrentar barreiras estruturais distintas das de economias mais renováveis.
+
+A discussão sobre transição justa é relevante para países do MERCOSUL e associados porque a região apresenta elevada heterogeneidade energética. Alguns países possuem forte participação hidrelétrica ou renovável em sua matriz elétrica, enquanto outros apresentam dependência significativa de petróleo, gás ou carvão. Além disso, países produtores ou exportadores de combustíveis fósseis podem enfrentar dilemas distintos daqueles com maior disponibilidade de recursos renováveis. Por isso, perfis fóssil-intensivos identificados por mineração de dados não devem ser interpretados apenas como atraso tecnológico, mas como sínteses de condições estruturais, econômicas e históricas.
+
+\subsection{Indicadores energéticos, matriz elétrica e intensidade de carbono}
+\label{subsec:indicadores_matriz_intensidade}
+
+A análise da transição energética depende de indicadores que representem diferentes dimensões do sistema --- participações renovável, fóssil e de baixo carbono na energia e na eletricidade, intensidade de carbono da eletricidade, consumo per capita e intensidade energética ---, cada um capturando uma dimensão específica que, isolada, pode produzir interpretações incompletas.
+
+A intensidade de carbono da eletricidade é particularmente importante porque expressa a quantidade de emissões associadas à geração elétrica. Países com elevada participação de carvão, óleo ou gás na eletricidade tendem a apresentar maior intensidade de carbono. Por outro lado, países com participação significativa de hidrelétricas, solar, eólica, nuclear ou outras fontes de baixo carbono tendem a apresentar menor intensidade de carbono da eletricidade. No entanto, variações anuais nesse indicador podem refletir fatores conjunturais, como estiagens, crises energéticas, variações de demanda ou mudanças temporárias no despacho de usinas. Análises setoriais das emissões, como a realizada para a economia brasileira por \citeonline{Olier2026Co2EmissionDynamics}, evidenciam que a intensidade de carbono varia conforme o setor e o período considerados.
+
+O estudo de \citeonline{RestrepoRoman2024}, que aplicou aprendizado de máquina e clusterização hierárquica para avaliar a disponibilidade solar e eólica em municípios colombianos, ilustra como agrupamentos sintetizam padrões energéticos e apoiam o planejamento, destacando ainda o potencial de complementaridade entre fontes (por exemplo, integração solar--hidrelétrica). Essa lógica sustenta o uso de mineração de dados neste artigo como instrumento de síntese exploratória, e não como substituto da interpretação energética.
+
+Além dos indicadores estáticos, variáveis temporais são necessárias para capturar tendências recentes. A variação da participação renovável e a tendência de renováveis em janela móvel permitem diferenciar países com matriz historicamente renovável daqueles que apresentam crescimento recente de fontes renováveis. Essa distinção é relevante porque dois países podem ter valores semelhantes em determinado ano, mas trajetórias históricas distintas. Dessa forma, a inclusão de variáveis temporais contribui para caracterizar melhor os perfis de transição.
+
+\subsection{América Latina, MERCOSUL e heterogeneidade regional}
+\label{subsec:america_latina_mercosul}
+
+A América Latina apresenta condições particulares para o estudo da transição energética. A região combina elevada disponibilidade de recursos renováveis, presença significativa de hidrelétricas, potencial solar e eólico, reservas de combustíveis fósseis, desigualdades socioeconômicas e diferentes capacidades institucionais. Essa combinação produz trajetórias energéticas heterogêneas. Portanto, análises regionais precisam evitar generalizações excessivas.
+
+No caso dos países do MERCOSUL e associados, essa heterogeneidade é evidente. Brasil, Paraguai e Uruguai, por exemplo, apresentam forte presença de fontes renováveis na eletricidade, especialmente hidrelétrica e, em alguns casos, eólica e biomassa. Argentina, Bolívia, Colômbia, Equador, Peru e Venezuela possuem diferentes graus de dependência de gás, petróleo ou hidreletricidade. Chile, por sua vez, tem avançado na incorporação de renováveis não convencionais, especialmente solar e eólica. Estudos recentes sobre previsão da produção de energia verde em países latino-americanos reforçam essa heterogeneidade de trajetórias \cite{Saleem2025ForecastingGreenEnergy}. Essa diversidade torna inadequado avaliar a transição energética regional por um único indicador.
+
+O estudo de \citeonline{Encinas2025}, embora focado na construção em madeira no Chile, oferece uma contribuição transponível à transição energética latino-americana: a aceitação social das soluções de baixo carbono é decisiva para sua difusão. Os autores mostram que soluções tecnicamente viáveis podem enfrentar barreiras de percepção pública, confiança e legitimidade social, identificando percepções ambivalentes diante de alternativas de descarbonização. Transposto ao domínio energético, esse argumento reforça que a adoção de fontes renováveis, de infraestrutura elétrica e de políticas climáticas depende também de fatores sociais, culturais e territoriais. Por isso, os perfis de transição energética devem ser tratados como sínteses multivariadas de indicadores, e não como classificações normativas absolutas.
+
+
+\subsection{Fundamentos dos métodos de mineração de dados e aprendizado de máquina}
+\label{subsec:fundamentos_metodos}
+
+A abordagem adotada neste artigo apoia-se em métodos consolidados de mineração de dados e aprendizado de máquina, cuja formalização é relevante para assegurar transparência e reprodutibilidade. O agrupamento foi conduzido pelo algoritmo K-Means \cite{MacQueen1967,Lloyd1982}, que particiona as observações em $k$ grupos minimizando a soma das distâncias quadráticas entre cada observação e o centroide de seu grupo. Por ser sensível à escala das variáveis, o método requer padronização prévia dos atributos e a definição do número de grupos, etapa usualmente apoiada por métricas internas de validação.
+
+Três métricas internas amplamente utilizadas orientam essa escolha. O coeficiente de silhueta \cite{Rousseeuw1987} mede, para cada observação, o grau de coesão ao próprio grupo em relação à separação dos demais, variando de $-1$ a $1$. O índice de Davies--Bouldin \cite{DaviesBouldin1979} expressa a razão média entre dispersão intragrupo e separação intergrupos, sendo preferíveis os valores mais baixos. O índice de Calinski--Harabasz \cite{CalinskiHarabasz1974} relaciona a variância entre grupos à variância interna, com valores mais altos indicando partições mais bem definidas. O uso conjunto dessas métricas reduz a dependência de um único critério na seleção de $k$.
+
+Na etapa supervisionada, foram considerados modelos representativos de diferentes famílias: regressão logística e árvores de decisão \cite{Hastie2009}, florestas aleatórias \cite{Breiman2001}, máquinas de vetores de suporte \cite{CortesVapnik1995} e classificação por vizinhança \cite{CoverHart1967}. Esses modelos diferem quanto à capacidade de capturar relações lineares e não lineares e quanto à interpretabilidade, o que justifica sua comparação. Para a interpretação dos resultados, utilizou-se a importância de variáveis por permutação \cite{Breiman2001}, que estima a contribuição de cada atributo pela degradação do desempenho quando seus valores são aleatoriamente permutados, dispensando o reajuste do modelo. As análises foram conduzidas em ambiente Python, com bibliotecas de código aberto amplamente utilizadas em aprendizado de máquina, como o \textit{scikit-learn} \cite{Pedregosa2011}.
+
+A opção por métodos interpretáveis e por métricas internas de validação é coerente com o objetivo do estudo: mais do que maximizar o desempenho preditivo, busca-se caracterizar e diferenciar perfis de transição energética de forma transparente e auditável.
+
+\subsection{Mineração de dados e clusterização de perfis energéticos}
+\label{subsec:mineracao_clusterizacao}
+
+No presente artigo, a clusterização é empregada para identificar perfis de transição energética a partir de indicadores públicos, em linha com estudos recentes que aplicam agrupamentos em contextos energéticos \cite{Maissa2025,RestrepoRoman2024,Encinas2025}. Um agrupamento não representa, porém, uma verdade natural, mas uma estrutura derivada de decisões metodológicas (variáveis, padronização, métrica de distância, algoritmo e número de grupos); os perfis tampouco são estágios lineares de desenvolvimento, podendo um país migrar entre eles ao longo do tempo. Devem, assim, ser compreendidos como fotografias multivariadas de uma trajetória, cuja interpretação combina métricas estatísticas e conhecimento do domínio energético.
+
+\subsection{Aprendizado de máquina interpretável aplicado à transição energética}
+\label{subsec:ml_interpretavel}
+
+O aprendizado de máquina tem sido progressivamente incorporado aos estudos sobre energia, clima e sustentabilidade, em tarefas como previsão de demanda, avaliação de recursos renováveis, modelagem de emissões e apoio à decisão \cite{RestrepoRoman2024,Prina2023}. Em aplicações voltadas à descarbonização e à formulação de políticas públicas, contudo, o desempenho preditivo isolado não é suficiente: é necessário compreender quais variáveis sustentam as decisões do modelo. Por isso, o aprendizado de máquina interpretável assume papel central, e técnicas como a importância de variáveis por permutação \cite{Breiman2001} permitem identificar os atributos que mais contribuem para a distinção entre perfis.
+
+No presente artigo, a classificação supervisionada não busca prever causalmente a descarbonização, mas reproduzir os perfis obtidos por clusterização e verificar se podem ser discriminados por variáveis energéticas, elétricas e temporais. Os rótulos não correspondem a classes externas observadas, e sim a categorias construídas por agrupamento; o modelo supervisionado é, portanto, uma etapa de reprodução, validação e explicação dos perfis, e não evidência causal.
+
+A combinação de clusterização, classificação supervisionada, validação temporal sem vazamento, interpretabilidade e ablação de variáveis constitui uma estratégia adequada para investigar perfis regionais, desde que os resultados não sejam convertidos em inferências causais nem em rankings absolutos de países \cite{Maissa2025,RestrepoRoman2024,Dracea2026}.
+
+% ------------------------------------------------------------
+% 5. METODOLOGIA
+% ------------------------------------------------------------
+\section{Metodologia}
+
+\subsection{Delineamento da pesquisa}
+
+Este estudo possui natureza quantitativa, aplicada e experimental, baseado na integração e análise de dados públicos. O procedimento metodológico compreendeu coleta, auditoria, engenharia de atributos, pré-processamento, agrupamento não supervisionado, classificação supervisionada, validação temporal, interpretabilidade e análises de robustez e ablação. Todas as etapas foram implementadas em Python, com semente aleatória fixa para assegurar reprodutibilidade.
+
+\subsection{Fonte de dados e recorte}
+
+Os dados foram obtidos do \textit{Our World in Data Energy Dataset} (OWID), base pública que consolida indicadores energéticos e de emissões a partir de fontes oficiais internacionais. Utilizou-se o arquivo de dados e seu respectivo dicionário de variáveis. A unidade de análise foi o par país-ano. Foram considerados dez países membros e associados do MERCOSUL --- Argentina, Bolívia, Brasil, Chile, Colômbia, Equador, Paraguai, Peru, Uruguai e Venezuela --- e o recorte temporal da modelagem abrangeu o período de 2000 a 2025, resultando em 259 observações país-ano após a engenharia de atributos.
+
+\subsection{Auditoria e limpeza dos dados}
+
+A auditoria compreendeu verificação de valores ausentes, identificação de duplicidades, padronização dos nomes dos países, alinhamento temporal das séries, análise de cobertura por variável e identificação de inconsistências ou quebras de série. As decisões de tratamento foram documentadas para garantir reprodutibilidade.
+
+\subsection{Engenharia de atributos}
+
+A partir das variáveis primárias do OWID, foram construídos atributos derivados interpretáveis. As participações renovável, fóssil e de baixo carbono foram calculadas como razões entre o consumo (ou a geração) da respectiva fonte e o total correspondente, tanto na matriz energética quanto na matriz elétrica. Foram ainda derivados atributos temporais por país: a variação anual da participação renovável (diferença ano a ano, em pontos percentuais) e a tendência de renováveis em cinco anos (inclinação de uma regressão linear simples em janela móvel de cinco anos, exigindo ao menos três pontos válidos).
+
+Construiu-se também um índice preliminar de transição, definido como a média não ponderada de seis componentes normalizados pelo método min--max: a participação de renováveis na energia, a participação de baixo carbono na eletricidade e os complementos (um menos o valor normalizado) da participação fóssil na energia, da intensidade de carbono da eletricidade, das emissões de CO$_2$ por unidade de energia e da variação percentual de CO$_2$. Assim, valores mais altos do índice indicam configurações mais favoráveis à descarbonização.
+
+Entre os atributos candidatos, foram retidos aqueles com cobertura de pelo menos 55\% das observações: participação de renováveis, fóssil e de baixo carbono na energia; participação de renováveis, fóssil e de baixo carbono na eletricidade; intensidade de carbono da eletricidade; energia per capita; energia por unidade de PIB; variação anual da participação renovável; e tendência de renováveis em cinco anos --- onze variáveis empregadas na clusterização e na classificação. O índice preliminar de transição foi mantido como variável auxiliar de interpretação, não sendo utilizado como atributo de modelagem.
+
+\subsection{Pré-processamento}
+
+Antes do agrupamento e da classificação, os valores ausentes foram tratados por imputação pela mediana e as variáveis foram padronizadas por escore-padrão (média zero e desvio unitário). Esses transformadores foram encadeados em um \textit{pipeline}, o que permitiu ajustá-los exclusivamente sobre os dados de treino nas etapas de validação temporal, evitando vazamento de informação.
+
+\subsection{Construção dos perfis de transição energética}
+
+Os perfis de transição energética foram definidos por agrupamento não supervisionado sobre as onze variáveis de modelagem; o índice preliminar de transição foi deliberadamente excluído do conjunto de atributos da clusterização --- mantido apenas como variável auxiliar de interpretação ---, de modo a evitar circularidade entre atributo e rótulo. Compararam-se três algoritmos --- K-Means, agrupamento hierárquico (\textit{agglomerative}) e modelos de mistura gaussiana (GMM) --- para valores de $k$ de 2 a 5, avaliados por métricas internas de qualidade (coeficiente de silhueta, índice de Davies--Bouldin e índice de Calinski--Harabasz) e pela caracterização dos centroides. Como nenhuma configuração se destacou de forma inequívoca, adotou-se o K-Means com $k=3$ por equilíbrio entre métrica interna, parcimônia e interpretabilidade substantiva, e não como máximo isolado de uma métrica. O algoritmo foi configurado com vinte inicializações aleatórias e semente fixa, e as variáveis foram padronizadas previamente; os grupos foram ordenados com auxílio do índice preliminar e a estrutura foi visualizada por projeção em duas componentes principais (PCA).
+
+\subsection{Modelagem supervisionada}
+
+Após a definição dos perfis, modelos supervisionados foram treinados para reproduzir os rótulos derivados da clusterização, avaliando a separabilidade dos grupos no espaço de atributos. Foram considerados cinco algoritmos, todos com semente fixa: regressão logística (com ponderação de classes), árvore de decisão (profundidade máxima cinco), floresta aleatória (quatrocentas árvores, com ponderação de classes), máquina de vetores de suporte com núcleo RBF (com ponderação de classes) e classificação por vizinhança (cinco vizinhos). Os algoritmos de \textit{gradient boosting} (XGBoost e LightGBM) foram deliberadamente excluídos para manter menor complexidade, reduzir a dependência computacional e priorizar modelos interpretáveis e comparáveis entre si.
+
+A divisão dos dados foi temporal: o conjunto de treino reuniu observações até 2022 (230 pares país-ano) e o de teste, os anos de 2023 a 2025 (29 pares país-ano). O pré-processamento foi ajustado apenas no treino, dentro do \textit{pipeline}.
+
+\subsection{Validação temporal sem vazamento}
+
+Como os rótulos de perfil derivam da clusterização, avaliou-se um cenário adicional de controle de vazamento metodológico, no qual o imputador, o padronizador e o próprio K-Means (com $k=3$) foram reajustados exclusivamente sobre o conjunto de treino (até 2022). As observações de teste (2023 a 2025) foram então transformadas e atribuídas a perfis com base apenas nos parâmetros aprendidos no treino, e os classificadores foram reavaliados nesse cenário. A comparação entre os dois cenários permite verificar se o desempenho depende de informação proveniente do período de teste.
+
+\subsection{Protocolo de avaliação e interpretabilidade}
+
+O desempenho dos classificadores foi avaliado por acurácia, acurácia balanceada, F1 macro, F1 ponderado, precisão e revocação macro, além da matriz de confusão --- métricas adequadas a problemas multiclasse e potencialmente desbalanceados. A interpretação foi conduzida por importância de variáveis por permutação, calculada sobre o conjunto de teste, com trinta repetições e o F1 macro como referência, identificando quais atributos mais contribuíram para a distinção entre os perfis.
+
+\subsection{Análise de robustez e ablação}
+
+A estabilidade dos agrupamentos foi avaliada por reexecuções com oito sementes aleatórias e diferentes valores de $k$ (de 2 a 6), comparando-se as partições pelo índice de Rand ajustado (ARI) e pela informação mútua normalizada (NMI). Adicionalmente, conduziu-se um estudo de ablação de variáveis na classificação, com três cenários: todas as variáveis de modelagem; apenas variáveis da matriz elétrica; e apenas variáveis da matriz energética. O objetivo foi verificar a dependência dos resultados em relação a subconjuntos específicos de atributos.
+
+\subsection{Implementação e reprodutibilidade}
+
+As análises foram conduzidas em Python, com a biblioteca \textit{scikit-learn} \cite{Pedregosa2011} para pré-processamento, agrupamento, classificação e interpretabilidade. A semente aleatória foi fixada em todas as etapas estocásticas, e o fluxo foi organizado em scripts sequenciais que reproduzem o estudo desde a coleta dos dados até a exportação de tabelas e figuras.
+
+% ------------------------------------------------------------
+% 6. RESULTADOS
+% ------------------------------------------------------------
+\section{Resultados}
+
+\subsection{Auditoria e cobertura dos dados}
+
+A base integrada reuniu indicadores energéticos, elétricos e socioeconômicos para os dez países analisados, sem ausências em relação ao escopo previsto; a maior parte das séries abrange o período de 1900 a 2025 (Paraguai e Uruguai a partir de 1980; Venezuela até 2024). Após a engenharia de atributos e o recorte temporal, o conjunto analítico final abrangeu 2000 a 2025, com 259 observações país-ano descritas pelas onze variáveis de modelagem detalhadas na metodologia, e a imputação de valores ausentes foi ajustada exclusivamente sobre o treino na validação temporal.
+
+\subsection{Análise exploratória}
+
+A análise exploratória evidenciou forte heterogeneidade entre os países. No ano mais recente disponível, a participação de renováveis na geração elétrica variou de cerca de 35\% (Argentina e Bolívia) a praticamente 100\% (Paraguai), e a intensidade de carbono da eletricidade seguiu o padrão inverso --- de cerca de 25~gCO\textsubscript{2}/kWh no Paraguai a cerca de 480 na Bolívia, com valores intermediários em Chile, Peru e Colômbia. Países com forte base hidrelétrica (Paraguai, Uruguai, Brasil e Venezuela) concentram-se no extremo de baixa intensidade, enquanto Argentina e Bolívia, mais dependentes de gás, apresentam as maiores intensidades. Essa heterogeneidade motiva a caracterização multivariada por perfis apresentada a seguir.
+
+\subsection{Perfis de transição energética}
+
+Compararam-se três algoritmos de agrupamento --- K-Means, agrupamento hierárquico e modelos de mistura gaussiana (GMM) --- para valores de $k$ de 2 a 5, sobre as onze variáveis de modelagem; o índice preliminar de transição foi mantido apenas como variável auxiliar de interpretação, e não como atributo da clusterização, de modo a evitar circularidade entre atributo e rótulo. A Tabela~\ref{tab:metricas-clusterizacao} apresenta as métricas internas. Nenhuma configuração se destaca de forma inequívoca: os coeficientes de silhueta são próximos entre as soluções com três e quatro grupos (entre 0,33 e 0,36). Adotou-se o K-Means com $k=3$ por equilíbrio entre a métrica interna, a parcimônia do modelo e a interpretabilidade substantiva dos perfis, e não como vencedor estatístico isolado.
+
+\begin{table}[H]
+\centering
+\caption{Métricas internas dos algoritmos avaliados (sem o índice preliminar), ordenadas pela silhueta; demais configurações omitidas. Em negrito, a configuração adotada (K-Means, $k=3$), escolhida por parcimônia e interpretabilidade, e não por máximo da silhueta.}
+\label{tab:metricas-clusterizacao}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Algoritmo} & \textbf{$k$} & \textbf{Silhueta} & \textbf{Davies--Bouldin} & \textbf{Calinski--Harabasz} \\
+\midrule
+Hierárquico & 4 & 0,360 & 1,013 & 117,7 \\
+K-Means & 4 & 0,360 & 1,057 & 120,8 \\
+K-Means & 5 & 0,346 & 1,116 & 117,6 \\
+K-Means & 2 & 0,345 & 1,194 & 157,3 \\
+\textbf{K-Means} & \textbf{3} & \textbf{0,330} & \textbf{1,236} & \textbf{121,0} \\
+GMM & 2 & 0,280 & 1,404 & 101,9 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaboração própria.}
+\end{table}
+
+Os três perfis foram caracterizados pelas médias dos indicadores em escala original (Tabela~\ref{tab:perfis-clusters}). O \textit{perfil fóssil-intensivo} reuniu 123 observações (oito países) e caracterizou-se por maior participação fóssil na eletricidade (52,6\%) e maior intensidade de carbono da eletricidade (375,7~gCO\textsubscript{2}/kWh). O \textit{perfil renovável/baixo carbono} reuniu 101 observações (oito países), com elevada participação de renováveis na eletricidade (84,0\%), baixa intensidade de carbono (133,8~gCO\textsubscript{2}/kWh) e baixa intensidade energética. O \textit{perfil renovável de alta intensidade energética} reuniu 35 observações (cinco países) e combina eletricidade majoritariamente renovável (82,0\%) e baixa intensidade de carbono (139,8~gCO\textsubscript{2}/kWh) com consumo energético elevado (energia per capita e por unidade de PIB bem acima da média); esse perfil é dominado pela trajetória do Brasil (25 das 35 observações) e indica um padrão de matriz elétrica limpa associado a forte consumo energético, e não um estágio intermediário de transição.
+
+\begin{table}[H]
+\centering
+\caption{Caracterização dos perfis de transição energética (médias em escala original).}
+\label{tab:perfis-clusters}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Perfil} & \textbf{Obs.} & \textbf{Países} & \textbf{Ren. el. (\%)} & \textbf{IC el.} & \textbf{MWh/hab.} & \textbf{kWh/PIB} \\
+\midrule
+Fóssil-intensivo & 123 & 8 & 46,1 & 375,7 & 17,6 & 1,4 \\
+Renovável de alta intensidade energ. & 35 & 5 & 82,0 & 139,8 & 15,8 & 1,5 \\
+Renovável/baixo carbono & 101 & 8 & 84,0 & 133,8 & 9,7 & 0,8 \\
+\bottomrule
+\end{tabular}%
+}
+\fonte{Elaboração própria. Ren. el.: participação de renováveis na eletricidade (\%); IC el.: intensidade de carbono da eletricidade (gCO\textsubscript{2}/kWh); MWh/hab.: energia per capita; kWh/PIB: energia por unidade de PIB. A contagem de países por perfil soma mais de dez porque um mesmo país pode ocupar perfis distintos em anos diferentes.}
+\end{table}
+
+Como os perfis são atribuídos a cada par país-ano, um mesmo país pode ocupar perfis distintos ao longo do tempo. Na observação mais recente (2025; 2024 para a Venezuela), apenas Argentina e Bolívia permanecem no perfil fóssil-intensivo, enquanto os demais oito países integram o perfil renovável/baixo carbono; o perfil de alta intensidade energética é majoritariamente histórico, concentrado na trajetória do Brasil até anos recentes. A projeção por componentes principais (Figura~\ref{fig:pca_clusters}) evidencia a separação entre os perfis no espaço de atributos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figuras/pca_clusters_transicao.png} % colocar o PNG em Figuras/
+    \caption{Projeção dos perfis por análise de componentes principais (as duas primeiras componentes explicam cerca de 67\% da variância).}
+    \label{fig:pca_clusters}
+    \fonte{Elaboração própria.}
+\end{figure}
+
+\subsection{Desempenho dos modelos de classificação}
+
+Os modelos supervisionados foram treinados para reproduzir os perfis derivados da clusterização --- um teste de separabilidade interna dos grupos, e não de capacidade preditiva externa ---, sob validação temporal (treino até 2022, com 230 observações; teste de 2023 a 2025, com 29). Os três perfis estão presentes no conjunto de teste (9, 4 e 16 observações), de modo que o F1 macro é calculado sobre as três classes. A Tabela~\ref{tab:metricas-classificacao} apresenta o desempenho: a regressão logística reproduziu integralmente os perfis no teste (F1 macro de 1,00), seguida de SVM e KNN (F1 macro de 0,94) e \textit{random forest} (0,81); a árvore de decisão apresentou o pior desempenho (0,41).
+
+\begin{table}[H]
+\centering
+\caption{Desempenho dos modelos de classificação dos perfis (validação temporal; os três perfis presentes no conjunto de teste).}
+\label{tab:metricas-classificacao}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Modelo} & \textbf{Acurácia} & \textbf{Acur. balanceada} & \textbf{F1 macro} & \textbf{F1 ponderado} \\
+\midrule
+Regressão logística & 1,00 & 1,00 & 1,00 & 1,00 \\
+SVM (RBF) & 0,931 & 0,926 & 0,939 & 0,929 \\
+KNN & 0,966 & 0,917 & 0,935 & 0,964 \\
+Random Forest & 0,862 & 0,775 & 0,806 & 0,855 \\
+Árvore de decisão & 0,448 & 0,542 & 0,413 & 0,398 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaboração própria.}
+\end{table}
+
+A matriz de confusão (Figura~\ref{fig:matriz_confusao}) mostra que a regressão logística classificou corretamente todas as 29 observações de teste, distribuídas pelos três perfis (9 fóssil-intensivo, 4 renovável de alta intensidade energética e 16 renovável/baixo carbono); o F1 macro de 1,00 refere-se, portanto, às três classes efetivamente presentes no teste. Esse resultado indica forte separabilidade dos perfis no espaço de atributos, mas deve ser lido com cautela: o conjunto de teste é pequeno (29 observações) e a métrica mede a reprodução interna dos rótulos da clusterização, não a capacidade de prever uma classe externa observada.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Figuras/matriz_confusao_artigo.png} % colocar o PNG em Figuras/
+    \caption{Matriz de confusão da regressão logística no conjunto de teste temporal (2023--2025); os três perfis estão presentes no teste e o F1 macro reportado refere-se às classes presentes.}
+    \label{fig:matriz_confusao}
+    \fonte{Elaboração própria.}
+\end{figure}
+
+\subsection{Validação temporal sem vazamento}
+
+Para reduzir o risco de vazamento metodológico, o imputador, o padronizador e o próprio K-Means foram reajustados utilizando apenas os dados de treino (até 2022), e os perfis das observações de teste foram reatribuídos com base exclusivamente nesse agrupamento treinado até 2022. Trata-se de um cenário de avaliação distinto do principal: enquanto a classificação principal testa a separabilidade dos perfis definidos sobre o conjunto global, este cenário, mais estrito, reaprende os próprios perfis apenas no treino --- razão pela qual a composição das classes no conjunto de teste pode diferir da avaliação principal. Nesse cenário, o perfil renovável de alta intensidade energética --- majoritariamente histórico --- não ocorre no teste de 2023 a 2025, que contempla apenas os perfis fóssil-intensivo e renovável/baixo carbono; o F1 macro, então calculado sobre essas duas classes, manteve-se elevado (1,00 para a regressão logística; 0,96 para KNN e SVM; 0,92 para o \textit{random forest}), indicando que o desempenho não depende de informação proveniente do período de teste.
+
+\subsection{Interpretabilidade}
+
+A importância por permutação, calculada para a regressão logística sobre o conjunto de teste, é apresentada na Tabela~\ref{tab:importancia-variaveis}. As variáveis mais associadas à distinção entre os perfis foram a tendência de renováveis em cinco anos (0,107), a participação de renováveis na eletricidade (0,099), a participação fóssil na eletricidade (0,095), a participação de baixo carbono na eletricidade (0,095) e a participação fóssil na energia (0,094). Predominam, portanto, variáveis da matriz elétrica e a dinâmica temporal recente, indicando que a separação entre os perfis está mais associada à composição da eletricidade e à trajetória de renováveis do que a indicadores energéticos agregados isolados.
+
+\begin{table}[H]
+\centering
+\caption{Importância das variáveis por permutação (regressão logística), medida como redução média no F1 macro; oito variáveis de maior contribuição.}
+\label{tab:importancia-variaveis}
+\begin{tabular}{lc}
+\toprule
+\textbf{Variável} & \textbf{Importância média} \\
+\midrule
+Tendência de renováveis (5 anos) & 0,107 \\
+Participação de renováveis (eletricidade) & 0,099 \\
+Participação fóssil (eletricidade) & 0,095 \\
+Baixo carbono (eletricidade) & 0,095 \\
+Participação fóssil (energia) & 0,094 \\
+Baixo carbono (energia) & 0,094 \\
+Intensidade de carbono da eletricidade & 0,087 \\
+Participação de renováveis (energia) & 0,076 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaboração própria.}
+\end{table}
+
+\subsection{Robustez e análise de ablação}
+
+A robustez foi avaliada por reexecuções com oito sementes aleatórias e por ablação de variáveis. Para o K-Means com $k=3$, as partições mostraram-se muito estáveis entre sementes, com índice de Rand ajustado (ARI) médio de 0,98 (mínimo de 0,96), indicando baixa sensibilidade à inicialização aleatória. A ablação da classificação (Tabela~\ref{tab:ablacao}) mostra que o uso das onze variáveis atinge F1 macro de 1,00 na regressão logística; restringir os atributos apenas à matriz elétrica reduz o F1 macro para 0,74, e apenas à matriz energética, para 0,61. A diferenciação dos perfis depende, portanto, da combinação de indicadores elétricos e energéticos, com papel central da matriz elétrica, e não de uma única medida. Cabe destacar que o índice preliminar de transição não integra a clusterização nem a classificação, tendo sido empregado apenas como variável auxiliar de interpretação, o que elimina a circularidade entre atributo e rótulo.
+
+\begin{table}[H]
+\centering
+\caption{Ablação de variáveis na classificação (regressão logística, validação temporal).}
+\label{tab:ablacao}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Cenário} & \textbf{Nº de variáveis} & \textbf{F1 macro} \\
+\midrule
+Todas as variáveis & 11 & 1,00 \\
+Apenas matriz elétrica & 5 & 0,74 \\
+Apenas matriz energética & 6 & 0,61 \\
+\bottomrule
+\end{tabular}
+\fonte{Elaboração própria.}
+\end{table}
+
+% ------------------------------------------------------------
+% 7. DISCUSSÃO
+% ------------------------------------------------------------
+\section{Discussão}
+
+\subsection{Coerência dos perfis com a realidade energética regional}
+
+Os três perfis mostraram-se coerentes com características reconhecidas das matrizes da região. Na observação mais recente, apenas Argentina e Bolívia permanecem no perfil fóssil-intensivo --- condizente com a relevância do gás e do petróleo em seus sistemas ---, enquanto os demais países integram o perfil renovável/baixo carbono, refletindo forte presença hidrelétrica e, em alguns casos, expansão solar e eólica. O terceiro perfil, de eletricidade renovável mas alta intensidade energética, é majoritariamente histórico e concentrado na trajetória do Brasil, sugerindo um padrão de matriz elétrica limpa associado a elevado consumo de energia, e não um estágio intermediário de transição. A interpretação deve ser cautelosa: o pertencimento a um perfil refere-se a um par país-ano e reflete sobretudo a matriz elétrica, de modo que os perfis devem ser lidos como sínteses orientadas pela eletricidade, e não como medidas integrais de sustentabilidade energética --- distinção entre matriz elétrica e matriz energética destacada por \citeonline{Prina2023}.
+
+\subsection{A matriz elétrica como eixo de diferenciação}
+
+A análise de importância por permutação indicou que as variáveis mais associadas à distinção entre os perfis pertencem majoritariamente à matriz elétrica --- participações renovável, fóssil e de baixo carbono na geração e intensidade de carbono da eletricidade ---, acompanhadas da tendência de renováveis em cinco anos; os indicadores da matriz energética contribuem de forma secundária. Esse achado é consistente com a literatura que situa a matriz elétrica no centro das estratégias de descarbonização \cite{Reichert2024ForecastingElectricityGeneration,Rio2025ModelingPlanningSustainable,ValenciaDuque2025EvaluationEnergyEfficiency}.
+
+Uma hipótese plausível para esse padrão --- que os dados deste estudo não permitem confirmar --- é que a dependência fóssil na energia total, associada a transporte, indústria e usos finais, seja relativamente mais homogênea entre os países analisados do que a composição da eletricidade, tornando os indicadores elétricos mais discriminantes. Essa conjectura é compatível com a natureza intersetorial da transição descrita por \citeonline{Prina2023}, mas exigiria análise específica do acoplamento setorial para ser avaliada.
+
+\subsection{A dimensão temporal da transição}
+
+O fato de a tendência de renováveis em cinco anos ter figurado como a variável mais importante reforça a leitura, presente em \citeonline{Dracea2026} e \citeonline{AsturiasSchaub2025FractionalIntegrationEnergy}, de que a transição energética deve ser observada de forma temporal, e não a partir de um único ano. Coerentemente, o perfil de alta intensidade energética concentra-se em observações até anos recentes, enquanto a fotografia atual situa a maioria dos países no perfil renovável/baixo carbono, o que sugere --- como hipótese a ser investigada --- um movimento em direção a matrizes elétricas mais limpas ao longo do tempo. Cabe ressaltar, contudo, que séries de intensidade de carbono e de participação elétrica podem sofrer variações conjunturais, associadas a estiagens, crises de oferta ou oscilações de demanda; \citeonline{Dracea2026} alertam justamente para a necessidade de distinguir mudanças estruturais de flutuações de curto prazo.
+
+\subsection{Reprodutibilidade e robustez dos perfis}
+
+O elevado desempenho dos modelos sob validação temporal indica que os perfis são reproduzíveis a partir dos indicadores, isto é, possuem separabilidade no espaço de atributos --- uma validação interna da estrutura dos grupos, e não evidência causal ou predição de classe externa \cite{Maissa2025}. A magnitude do desempenho da regressão logística (F1 macro de 1,00) deve ser ponderada pelo tamanho reduzido do teste (29 observações). A ablação reforça a robustez: restringir os atributos apenas à matriz energética ou apenas à elétrica degrada a classificação (F1 macro de 0,61 e 0,74, respectivamente), evidência de que a diferenciação se apoia na combinação de indicadores, com papel central da matriz elétrica. Como o índice preliminar de transição não foi utilizado na clusterização nem na classificação, não há circularidade entre atributo e rótulo.
+
+\subsection{Implicações para o MERCOSUL e limites interpretativos}
+
+Do ponto de vista regional, os perfis sugerem trajetórias distintas que dialogam com a heterogeneidade latino-americana discutida na fundamentação. Países do perfil fóssil-intensivo, frequentemente produtores de gás e petróleo, tendem a enfrentar desafios estruturais específicos --- econômicos, laborais e de infraestrutura --- associados à transição, em linha com as preocupações de transição justa levantadas por \citeonline{Maissa2025}. Tais perfis não devem ser lidos como ``atraso'', mas como sínteses de condições estruturais e históricas, evitando-se a conversão dos resultados em um \textit{ranking} normativo de países.
+
+\subsection{Limitações}
+
+Os resultados estão sujeitos a limitações que condicionam sua interpretação. Primeiro, o número de países é pequeno (dez) e o conjunto de teste temporal é reduzido (29 observações), o que torna as métricas de classificação --- sobretudo as próximas de 1,00 --- estimativas possivelmente otimistas, a serem confirmadas com janelas temporais e amostras maiores. Segundo, o estudo é de natureza exploratória e correlacional: os perfis são categorias construídas a partir de decisões metodológicas (seleção de variáveis, padronização, métrica de distância, algoritmo e número de grupos) e não classes naturais, de modo que não se sustentam inferências causais. Terceiro, a separação entre os grupos é moderada (silhueta em torno de 0,33) e a escolha de $k=3$ apoia-se em parcimônia e interpretabilidade, e não em um máximo métrico inequívoco --- soluções com quatro grupos apresentam silhueta ligeiramente superior. Quarto, o perfil renovável de alta intensidade energética é dominado por um único país (o Brasil), o que limita sua leitura como padrão regional amplo. Por fim, os resultados dependem da qualidade e da cobertura dos dados públicos, incluindo séries mais curtas para Paraguai e Uruguai, término em 2024 para a Venezuela e imputação de valores ausentes, e indicadores elétricos podem refletir oscilações conjunturais, o que recomenda cautela ao interpretar variações anuais como tendências estruturais.
+
+% ------------------------------------------------------------
+% 9. CONCLUSÕES
+% ------------------------------------------------------------
+\section{Conclusões}
+
+Este trabalho desenvolveu uma abordagem baseada em mineração de dados e aprendizado de máquina interpretável para identificar, classificar e interpretar trajetórias de descarbonização nos países do MERCOSUL e associados, a partir de indicadores públicos de energia, eletricidade e emissões. O objetivo geral foi atendido: a combinação de engenharia de atributos, clusterização e classificação interpretável permitiu caracterizar perfis comparáveis de transição energética e identificar os fatores mais associados à sua distinção.
+
+Os principais achados podem ser sintetizados em quatro pontos. Primeiro, identificaram-se três perfis de transição energética --- fóssil-intensivo, renovável/baixo carbono e renovável de alta intensidade energética ---, com predomínio recente do renovável/baixo carbono (apenas Argentina e Bolívia permanecem fóssil-intensivas no ano mais recente). Segundo, sob validação temporal, os modelos supervisionados reproduziram esses perfis com alto desempenho, o que indica separabilidade no espaço de atributos; trata-se de reprodução interna dos rótulos, não de capacidade preditiva externa, e deve ser lida à luz do conjunto de teste reduzido. Terceiro, a interpretabilidade por permutação apontou variáveis da matriz elétrica e a tendência recente de renováveis como as mais relevantes para distinguir os perfis. Quarto, a clusterização foi conduzida sem o índice preliminar de transição --- mantido apenas como variável auxiliar ---, eliminando a circularidade entre atributo e rótulo, e a ablação confirmou que a diferenciação depende da combinação de indicadores elétricos e energéticos.
+
+Do ponto de vista científico e tecnológico, a principal contribuição é a proposição de um protocolo reprodutível e interpretável para o monitoramento da transição energética regional, que integra múltiplos indicadores, controla o vazamento temporal e explicita os fatores associados aos perfis. Reforça-se, contudo, que os resultados têm caráter exploratório e correlacional: os perfis são categorias construídas a partir de decisões metodológicas, e não classes naturais, e o desempenho elevado da classificação deve ser interpretado à luz do tamanho reduzido do conjunto de teste, conforme detalhado nas limitações. Quanto à aplicabilidade, o protocolo proposto, baseado em dados públicos e reprodutível, pode ser reexecutado periodicamente para monitorar a transição energética regional, acompanhar a migração de países entre perfis e subsidiar, de forma auditável, o debate sobre eficiência energética, expansão de renováveis e redução da intensidade de carbono da eletricidade no MERCOSUL e em seus países associados.
+
+Como trabalhos futuros, recomenda-se ampliar a cobertura de países e o horizonte temporal, incorporar variáveis econômicas, setoriais e tecnológicas, considerar a matriz energética total e o acoplamento setorial, avaliar cenários prospectivos e testar modelos temporais específicos para a previsão da intensidade de carbono e da participação renovável. Tais extensões podem fortalecer a robustez das conclusões e ampliar a utilidade do protocolo para o apoio a políticas públicas de descarbonização no MERCOSUL e em seus países associados.
+
+% ------------------------------------------------------------
+% REFERÊNCIAS
+% ------------------------------------------------------------
+\newpage
+\begin{spacing}{1}
+\bibliographystyle{abntex2-alf}
+\bibliography{referencias}
+\end{spacing}
+
+\end{document}
+

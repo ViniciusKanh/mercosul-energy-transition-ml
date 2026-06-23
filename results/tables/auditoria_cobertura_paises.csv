@@ -1,0 +1,11 @@
+﻿country,ano_minimo,ano_maximo,qtd_anos,qtd_linhas,pais_previsto_no_projeto
+Argentina,1900,2025,126,126,True
+Bolivia,1900,2025,126,126,True
+Brazil,1900,2025,126,126,True
+Chile,1900,2025,126,126,True
+Colombia,1900,2025,126,126,True
+Ecuador,1900,2025,126,126,True
+Paraguay,1980,2025,46,46,True
+Peru,1900,2025,126,126,True
+Uruguay,1980,2025,46,46,True
+Venezuela,1900,2024,125,125,True

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Dados e resultados pesados
+*.pkl
+*.joblib
+*.parquet
+*.sqlite
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Backups locais (nao versionar)
+_backups/
+
+# LaTeX (artefatos de compilacao)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# ----------------------------------------------------------------------
+# Duplicatas geradas na RAIZ por execucoes do pipeline.
+# A copia canonica de cada saida vive em results/. Mantenha a raiz limpa.
+# (Rode .\organizar_resultados.ps1 para mover as existentes para backup.)
+# ----------------------------------------------------------------------
+/*.csv
+/*.tex
+/*.png
+/relatorio_*.md
+
+# Excecoes: nao ignorar o que e legitimo na raiz
+!README.md
+!requirements.txt
+!requirements-optional.txt

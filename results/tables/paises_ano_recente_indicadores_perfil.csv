@@ -1,0 +1,11 @@
+﻿country,year,perfil_transicao,nome_sugerido,renewables_share_energy,fossil_share_energy,renewables_share_elec,fossil_share_elec,carbon_intensity_elec,indice_transicao_preliminar
+Argentina,2025,baixa_transicao,Perfil fossil-intensivo,,,34.58047866821289,58.39373397827149,346.0,0.3460761533682953
+Bolivia,2025,baixa_transicao,Perfil fossil-intensivo,,,36.09684371948242,63.90315628051758,481.2900085449219,0.1914813447889062
+Brazil,2025,transicao_avancada,Perfil renovavel/baixo carbono,,,86.6014633178711,11.28402614593506,109.9499969482422,0.8523908780101502
+Chile,2025,transicao_avancada,Perfil renovavel/baixo carbono,,,66.37288665771484,33.62711715698242,289.489990234375,0.5523917511809282
+Colombia,2025,transicao_avancada,Perfil renovavel/baixo carbono,,,77.02523040771484,22.974767684936523,186.8099975585937,0.7105505952448559
+Ecuador,2025,transicao_avancada,Perfil renovavel/baixo carbono,,,79.39891052246094,20.601093292236328,159.02000427246094,0.7501421370297952
+Paraguay,2025,transicao_avancada,Perfil renovavel/baixo carbono,,,100.0,0.0,24.700000762939453,0.9990965291774916
+Peru,2025,baixa_transicao,Perfil fossil-intensivo,,,63.64990234375,36.35009765625,238.25,0.5805975502950457
+Uruguay,2025,transicao_avancada,Perfil renovavel/baixo carbono,,,97.82244873046876,2.1775543689727783,80.4000015258789,0.9360209979715132
+Venezuela,2024,transicao_avancada,Perfil renovavel/baixo carbono,25.840307235717773,74.1596908569336,91.13939666748048,8.860601425170898,85.86000061035156,0.6973888469974059

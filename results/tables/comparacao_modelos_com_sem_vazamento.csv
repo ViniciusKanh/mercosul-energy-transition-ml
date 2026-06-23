@@ -1,0 +1,3 @@
+﻿cenario,modelo,accuracy,balanced_accuracy,f1_macro,f1_weighted,observacao
+validacao_original_com_rotulos_clusterizados_em_toda_amostra,logistic_regression,1.0,1.0,1.0,1.0,Referencia historica; pode conter vazamento na construcao dos rotulos.
+validacao_temporal_sem_vazamento,logistic_regression,1.0,1.0,1.0,1.0,"Scaler, imputador e KMeans ajustados apenas no treino ate 2022."

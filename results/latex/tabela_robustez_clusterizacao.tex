@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\caption{Robustez da clusterizacao por algoritmo, k e seed.}
+\label{tab:robustez-clusterizacao}
+\begin{tabular}{llllll}
+\hline
+algoritmo & k & seed & silhouette & davies\_bouldin & calinski\_harabasz \\
+\hline
+kmeans & 6 & 21 & 0.3807 & 1.0699 & 127.1255 \\
+kmeans & 6 & 0 & 0.3804 & 1.0675 & 127.1345 \\
+kmeans & 6 & 2024 & 0.3804 & 1.0675 & 127.1345 \\
+kmeans & 6 & 42 & 0.3802 & 1.0708 & 127.1547 \\
+kmeans & 6 & 1 & 0.3789 & 1.0674 & 127.1799 \\
+kmeans & 6 & 7 & 0.3789 & 1.0674 & 127.1799 \\
+kmeans & 6 & 99 & 0.3789 & 1.0674 & 127.1799 \\
+kmeans & 6 & 123 & 0.3789 & 1.0674 & 127.1799 \\
+agglomerative & 6 &  & 0.3674 & 1.0621 & 120.9644 \\
+kmeans & 3 & 0 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 1 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 7 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 21 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 42 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 99 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 123 & 0.3674 & 1.0383 & 129.9322 \\
+kmeans & 3 & 2024 & 0.3674 & 1.0383 & 129.9322 \\
+agglomerative & 5 &  & 0.3645 & 1.0869 & 124.3787 \\
+kmeans & 5 & 1 & 0.3642 & 1.069 & 128.9304 \\
+kmeans & 5 & 21 & 0.3642 & 1.069 & 128.9304 \\
+\hline
+\end{tabular}
+\end{table}

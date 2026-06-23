@@ -1,0 +1,4 @@
+﻿modelo,classe,presente_no_teste,qtd_real_teste,qtd_predito,linha_zerada,coluna_zerada,observacao
+logistic_regression,Intermediário,False,0,0,True,True,Perfil ausente no conjunto de teste temporal; interpretar a linha/coluna zerada como limitação da amostra.
+logistic_regression,Fóssil-intensivo,True,10,10,False,False,Perfil presente no conjunto de teste temporal.
+logistic_regression,Renovável/baixo carbono,True,19,19,False,False,Perfil presente no conjunto de teste temporal.

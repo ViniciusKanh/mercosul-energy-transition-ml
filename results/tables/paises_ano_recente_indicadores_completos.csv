@@ -1,0 +1,11 @@
+﻿country,year,perfil_transicao,nome_sugerido,renewables_share_energy,fossil_share_energy,renewables_share_elec,fossil_share_elec,carbon_intensity_elec,indice_transicao_preliminar,observacao_completude
+Argentina,2024.0,baixa_transicao,Perfil fossil-intensivo,14.802978515625,82.58321380615234,34.3846321105957,58.76336288452149,344.8299865722656,0.3260707218934739,Completo
+Bolivia,,,,,,,,,,Sem ano com todos os indicadores completos
+Brazil,2024.0,transicao_avancada,Perfil renovavel/baixo carbono,49.6159782409668,49.37820053100586,87.33305358886719,10.550877571105955,106.05999755859376,0.9302311008262516,Completo
+Chile,2024.0,transicao_avancada,Perfil renovavel/baixo carbono,32.25444793701172,67.74555206298828,70.04061889648438,29.959375381469727,259.8699951171875,0.6190642569306414,Completo
+Colombia,2024.0,baixa_transicao,Perfil fossil-intensivo,26.09288215637207,73.90711975097656,61.34170913696289,38.65829086303711,298.29998779296875,0.5118730930602893,Completo
+Ecuador,2024.0,transicao_avancada,Perfil renovavel/baixo carbono,25.357561111450195,74.64244079589844,72.443359375,27.556644439697266,203.6100006103516,0.5813452523225903,Completo
+Paraguay,,,,,,,,,,Sem ano com todos os indicadores completos
+Peru,2024.0,baixa_transicao,Perfil fossil-intensivo,26.656190872192383,73.34381103515625,60.1113166809082,39.8886833190918,258.7300109863281,0.5312511355729517,Completo
+Uruguay,,,,,,,,,,Sem ano com todos os indicadores completos
+Venezuela,2024.0,transicao_avancada,Perfil renovavel/baixo carbono,25.840307235717773,74.1596908569336,91.13939666748048,8.860601425170898,85.86000061035156,0.6973888469974059,Completo
